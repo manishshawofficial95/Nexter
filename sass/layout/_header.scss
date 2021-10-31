@@ -1,0 +1,76 @@
+@use '../abstracts/' as *;
+
+.header {
+    grid-column: full-start / col-end 6;
+
+    padding: 5rem;
+    padding-top: 2.5rem;
+    background: linear-gradient(rgba($clr-secondary-900, .93), rgba($clr-secondary-900, .93)),
+                url(../img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+
+    display: grid;
+    grid-template-rows: 1fr repeat(2, min-content) 1fr;
+    gap: .9375rem;
+
+    @include mq(beta) {
+        padding-left: 3.75rem;
+        padding-right: 3.75rem;
+
+        grid-column: full-start / full-end;
+    }
+
+    h1 {
+        line-height: 1.6;
+
+        @include mq(alpha) {
+            line-height: 1.2;
+        }
+    }
+
+    &__logo {
+        height: 1.875rem;
+        justify-self: center;
+    }
+
+    .btn {
+        align-self: start;
+        justify-self: start;
+    }
+
+    &__seenon-text {
+        color: $clr-grey-light-900;
+        font-size: 1rem;
+
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        align-items: center;
+        gap: 1rem;
+        
+        &::before,
+        &::after {
+            @include pseudo;
+            height: 1px;
+            background: currentColor;
+        }
+    }
+
+    &__seenon-logos {
+        display: flex;
+        justify-content: space-around;
+
+        img {
+            height: 1.5625rem;
+            filter: brightness(70%);
+
+            @include mq(delta) {
+                height: 1.3rem;
+            }
+
+            @include mq(alpha) {
+                height: .8rem;
+            }
+        }
+    }
+}

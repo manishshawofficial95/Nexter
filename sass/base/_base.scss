@@ -1,0 +1,101 @@
+@use '../abstracts/' as *;
+
+/////////////////////////////
+// BASIC CSS RESET
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+ol,
+figure {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	line-height: 1;
+}
+
+ul,
+ol {
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/////////////////////////////
+// HELPER CLASSES
+.mb-sm { margin-bottom: 1.25rem;}
+.mb-md { margin-bottom: 1.875rem;}
+.mb-lg { margin-bottom: 2.5rem;}
+
+/////////////////////////////
+// COMPONENTS
+.btn {
+    border: none;
+    border-radius: 0;
+    padding: 1.125rem 1.875rem;
+    color: #fff;
+    background-color: $clr-primary-100;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: .9375rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s;
+
+    &:hover {
+        background-color: $clr-primary-900;
+    }
+
+    @include mq(alpha) {
+        font-size: .875rem;
+        padding: .9rem 1.5rem
+    }
+}
+
+/////////////////////////////
+// BASE STYLING
+body {
+    font-family: $font-primary;
+    font-weight: 300;
+    line-height: 1.6;
+    color: $clr-grey-dark-100;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [side-start] 5rem [side-end full-start] minmax(3.75rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 8.75rem) [col-end]) [center-end] minmax(3.75rem, 1fr) [full-end];
+
+    @include mq(delta) {
+        grid-template-columns: [side-start] 4rem [side-end full-start] minmax(3.75rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 8.75rem) [col-end]) [center-end] minmax(3.75rem, 1fr) [full-end];
+    }
+
+    @include mq(gamma) {
+        grid-template-rows: 3rem 80vh min-content 40vw repeat(3, min-content);
+        grid-template-columns: [full-start] minmax(3.75rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 8.75rem) [col-end]) [center-end] minmax(3.75rem, 1fr) [full-end];
+    }
+
+    @include mq(beta) {
+        grid-template-rows: 3rem calc(100vh - 3rem);
+        grid-template-columns: [full-start] minmax(3.75rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 8.75rem) [col-end]) [center-end] minmax(3.75rem, 1fr) [full-end];
+    }
+}
